@@ -117,12 +117,14 @@
   .city.src .c{color:var(--bone)}
   .city:not(.src) .c{color:var(--dim)}
 
-  footer{border-top:1px solid var(--line);padding:2.6rem 0;display:flex;flex-wrap:wrap;
-    gap:1.2rem;justify-content:space-between;align-items:center}
-  footer .fm{font-family:'Dirty Stains',sans-serif;font-size:1.4rem;text-transform:uppercase;letter-spacing:0.03em;flex-basis:100%;margin-bottom:1.4rem}  
-  footer .fx{font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.2em;color:var(--ash);text-transform:uppercase}
   footer a{color:var(--ash);text-decoration:none;transition:color 0.3s ease}
   footer a:hover{color:var(--bone)}
+  footer{border-top:1px solid var(--line);padding:2.6rem 0;display:flex;flex-wrap:wrap;
+    gap:1.2rem 2.4rem;justify-content:flex-start;align-items:center}
+  footer .fm{font-family:'Dirty Stains',sans-serif;font-size:1.4rem;text-transform:uppercase;
+    letter-spacing:0.03em;margin-right:auto}
+  footer .fx{font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.2em;
+    color:var(--ash);text-transform:uppercase}
 
   @media(max-width:760px){
     .hero{height:75vh;min-height:0}
@@ -142,6 +144,7 @@
     .access h3{font-size:clamp(1.7rem,7vw,3.4rem)}
     footer{flex-direction:column;align-items:flex-start;gap:0.9}
     footer .fx{overflow-wrap:anywhere}
+    footer .fm{margin-top:1.7rem}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition-duration:0.001ms!important}
