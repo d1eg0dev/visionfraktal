@@ -201,9 +201,9 @@
       <div class="piece-info">
         <div class="piece-name stain">Genesis</div>
         <div class="piece-desc">Boxy oversize tee, 265gsm. DTF print — the source mark, white on black.</div>
-        <div class="piece-row"><span class="piece-price">$68</span><span class="piece-stock mono">/ 100</span></div>
-        <a class="piece-buy mono" href="PRINTFUL_LINK_GENESIS" target="_blank" rel="noopener">Tap in →</a>
-      </div>
+        <div class="piece-row"><span class="piece-price">$68 USD</span><span class="piece-stock mono">/ 100</span></div>
+        <div id="buy-genesis"></div>      
+    </div>
     </article>
     <article class="piece">
       <div class="piece-frame">
@@ -213,8 +213,8 @@
       <div class="piece-info">
         <div class="piece-name stain">Glitch</div>
         <div class="piece-desc">Boxy oversize tee, 265gsm. DTF print — corrupted signal, the field breaking up.</div>
-        <div class="piece-row"><span class="piece-price">$68</span><span class="piece-stock mono">/ 100</span></div>
-        <a class="piece-buy mono" href="PRINTFUL_LINK_GLITCH" target="_blank" rel="noopener">Tap in →</a>
+        <div class="piece-row"><span class="piece-price">$68 USD</span><span class="piece-stock mono">/ 100</span></div>
+        <div id="buy-glitch"></div>
       </div>
     </article>
     <article class="piece">
@@ -225,8 +225,8 @@
       <div class="piece-info">
         <div class="piece-name stain">Matrix</div>
         <div class="piece-desc">Boxy oversize tee, 265gsm. DTF print — nine-cell cymatic grid, order under chaos.</div>
-        <div class="piece-row"><span class="piece-price">$68</span><span class="piece-stock mono">/ 100</span></div>
-        <a class="piece-buy mono" href="PRINTFUL_LINK_MATRIX" target="_blank" rel="noopener">Tap in →</a>
+        <div class="piece-row"><span class="piece-price">$68 USD</span><span class="piece-stock mono">/ 100</span></div>
+        <div id="buy-matrix"></div>      
       </div>
     </article>
   </section>
@@ -281,6 +281,64 @@
     if(input.value && input.value.includes('@')){this.classList.add('done');}
     else{input.focus();input.style.borderBottomColor='#FF5A8C';}
   });
+</script>
+<script type="text/javascript">
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy && window.ShopifyBuy.UI) { init(); }
+  else {
+    var s = document.createElement('script');
+    s.async = true; s.src = scriptURL; s.onload = init;
+    document.head.appendChild(s);
+  }
+  function init() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'uwbc4g-i0.myshopify.com',
+      storefrontAccessToken: 'd3e8f49662ae52fdc38714babef23972',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      var products = [
+        { id: '15267517530480', node: 'buy-genesis' },
+        { id: '15267521823088', node: 'buy-glitch'  },
+        { id: '15267527426416', node: 'buy-matrix'  }
+      ];
+      var opts = {
+        "product": {
+          "iframe": false,
+          "buttonDestination": "checkout",
+          "contents": { "img": false, "title": false, "price": false, "options": false, "quantity": false, "button": true },
+          "text": { "button": "Tap in →" },
+          "styles": {
+            "button": {
+              "font-family": "'Space Mono', monospace",
+              "font-size": "0.72rem",
+              "letter-spacing": "0.2em",
+              "text-transform": "uppercase",
+              "background-color": "#EDEDE8",
+              "color": "#0A0A0A",
+              "border-radius": "0",
+              "padding": "0.8rem 1rem",
+              "width": "100%",
+              "margin-top": "1.4rem",
+              ":hover": { "background-color": "#EDEDE8", "opacity": "0.78", "color": "#0A0A0A" },
+              ":focus": { "background-color": "#EDEDE8" }
+            }
+          }
+        },
+        "cart": { "text": { "total": "Subtotal", "button": "Checkout" } },
+        "toggle": {}
+      };
+      products.forEach(function (p) {
+        ui.createComponent('product', {
+          id: p.id,
+          node: document.getElementById(p.node),
+          moneyFormat: '%24%20%7B%7Bamount%7D%7D',
+          options: opts
+        });
+      });
+    });
+  }
+})();
 </script>
 </body>
 </html>
