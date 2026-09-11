@@ -326,9 +326,13 @@
       var opts = {
         "product": {
           "iframe": false,
-          "buttonDestination": "checkout",
+          "buttonDestination": "modal",
           "contents": { "img": false, "title": false, "price": false, "options": false, "quantity": false, "button": true },
           "text": { "button": "Tap in →" }
+        },
+        "modalProduct": {
+          "contents": { "img": false, "imgWithCarousel": true, "button": false, "buttonWithQuantity": true },
+          "text": { "button": "Add to cart" }
         },
         "cart": { "text": { "total": "Subtotal", "button": "Checkout" } },
         "toggle": {}
